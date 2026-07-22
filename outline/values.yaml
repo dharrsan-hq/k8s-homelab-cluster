@@ -8,7 +8,7 @@ web:
 
 auth:
   google:
-    enabled: true  # 👈 Good catch! This must be true
+    enabled: true
     clientId:
     clientSecret:
 
