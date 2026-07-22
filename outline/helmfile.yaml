@@ -1,0 +1,12 @@
+repositories:
+  - name: outline
+    url: https://community-charts.github.io/helm-charts
+
+releases:
+  - name: my-outline
+    namespace: outline
+    createNamespace: true
+    chart: community-charts/outline
+    version: 0.9.2
+    values:
+      - ./values.yaml

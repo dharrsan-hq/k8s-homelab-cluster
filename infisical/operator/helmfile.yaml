@@ -1,0 +1,10 @@
+repositories:
+  - name: infisical-helm-charts
+    url: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
+
+releases:
+  - name: infisical-operator
+    namespace: infisical
+    createNamespace: true
+    chart: infisical-helm-charts/secrets-operator
+    version: 0.11.4

@@ -1,0 +1,7 @@
+apiVersion: secrets.infisical.com/v1beta1
+kind: InfisicalConnection
+metadata:
+  name: my-infisical-connection
+  namespace: default
+spec:
+  address: http://infisical-infisical-standalone-infisical.infisical:8080

@@ -1,0 +1,55 @@
+# Basic deployment
+replicaCount: 1
+
+url: https://docs.dharrsan.com
+
+web:
+  forceHttps: false
+
+auth:
+  google:
+    enabled: true  # 👈 Good catch! This must be true
+    clientId:
+    clientSecret:
+
+# Enable built-in PostgreSQL
+postgresql:
+  enabled: true
+  auth:
+    username:
+    password:
+    database: outline
+  primary:
+    persistence:
+      enabled: true
+      size: 8Gi
+
+# Enable built-in Redis
+redis:
+  enabled: true
+  auth:
+    enabled: true
+  master:
+    persistence:
+      enabled: true
+      size: 8Gi
+
+# Local file storage
+fileStorage:
+  mode: local
+  local:
+    persistence:
+      enabled: true
+      size: 8Gi
+
+# Ingress for external access
+ingress:
+  enabled: true
+  className: traefik
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: outline-https-header@kubernetescrd
+  hosts:
+    - host: docs.dharrsan.com
+      paths:
+        - path: /
+          pathType: Prefix
