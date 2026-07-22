@@ -7,7 +7,7 @@ Infrastructure-as-code for my home Kubernetes cluster. Every component is deploy
 | Node | Hardware | Location |
 |---|---|---|
 | optiplex-1 | Dell Optiplex 3060 (micro form factor) — i5 8th gen, 16GB DDR4 3200MHz (1 slot, upgradable to 32GB), 1TB Samsung SATA SSD | On switch |
-| optiplex-2 | Dell Optiplex 3060 | On switch |
+| optiplex-2 | Dell Optiplex 3060 (micro form factor) — i5 8th gen, 16GB DDR4 3200MHz (1 slot, upgradable to 32GB), 1TB Samsung SATA SSD | On switch |
 | rpi5 | Raspberry Pi 5, 8GB RAM, 512GB NVMe SSD | Remote (different region) |
 
 Switch: TP-Link SG108E. The two Optiplex nodes are wired to it directly; the Pi lives elsewhere and joins the cluster over [NetBird](https://netbird.io), a WireGuard-based mesh VPN.
