@@ -1,0 +1,9 @@
+releases:
+  - name: kavita
+    namespace: kavita
+    createNamespace: true
+
+    chart: ./charts/kavita
+
+    values:
+      - ./charts/kavita/values.yaml

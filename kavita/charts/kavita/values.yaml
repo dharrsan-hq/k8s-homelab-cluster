@@ -1,0 +1,41 @@
+image:
+  repository: jvmilazz0/kavita
+  tag: latest
+  pullPolicy: IfNotPresent
+
+deployment:
+  replicas: 1
+
+tz: Asia/Kolkata
+
+storage:
+  persistence:
+    claimName: kavita-pvc
+    storageClass: longhorn
+    size: 10Gi
+
+  volumeMounts:
+    - name: kavita
+      mountPath: /kavita/config
+      subPath: config
+
+    - name: kavita
+      mountPath: /sre
+      subPath: SRE
+
+    - name: kavita
+      mountPath: /sde
+      subPath: SDE
+
+ingress:
+  enabled: true
+  className: traefik
+
+  hosts:
+    - host: books.dharrsan.com
+
+  tls:
+    enabled: false
+
+service:
+  port: 5000

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kavita-deployment
+  labels:
+    app: kavita
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: kavita
+  template:
+    metadata:
+      labels:
+        app: kavita
+    spec:
+      containers:
+        - name: kavita
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: "{{ .Values.image.pullPolicy }}"
+          env:
+            - name: TZ
+              value: "{{ .Values.tz }}"
+          ports:
+            - containerPort: {{ .Values.service.port }}
+              name: http
+          volumeMounts:
+            {{- range .Values.storage.volumeMounts }}
+              - name: {{ .name }}
+                mountPath: {{ .mountPath }}
+                subPath: {{ .subPath }}
+            {{- end }}
+      volumes:
+        - name: kavita
+          persistentVolumeClaim:
+            claimName: {{ .Values.storage.persistence.claimName }}
